@@ -1,0 +1,10 @@
+sudo: required
+language: generic
+services:
+  - docker
+
+before_install:
+  - docker build -t dt5513/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true dt5513/docker-react npm run test
